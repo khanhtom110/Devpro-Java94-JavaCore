@@ -1,0 +1,12 @@
+# Chặn thư mục cấu hình chung của Workspace
+.metadata/
+
+# Chặn các thư mục biên dịch và cấu hình của Eclipse trong mọi project con
+**/bin/
+**/.settings/
+**/.project
+**/.classpath
+
+# Chặn các file tạm của hệ điều hành
+.DS_Store
+Thumbs.db

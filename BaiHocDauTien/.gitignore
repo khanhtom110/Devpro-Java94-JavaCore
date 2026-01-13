@@ -1,0 +1,10 @@
+# Loại bỏ thư mục biên dịch và cấu hình Eclipse
+/bin/
+/.metadata/
+/.settings/
+.project
+.classpath
+
+# Loại bỏ các file tạm khác
+*.class
+.DS_Store

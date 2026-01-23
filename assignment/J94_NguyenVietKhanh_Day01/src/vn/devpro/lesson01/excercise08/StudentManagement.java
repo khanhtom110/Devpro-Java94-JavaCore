@@ -16,7 +16,7 @@ public class StudentManagement {
 		System.out.println("Nhap thong tin hoc sinh thu 3:");
 		student3.input();
 
-		System.out.printf("%-3s %-15s %-10s %-9s%n", "STT", "Ho va ten", "Ngay sinh", "Tong diem");
+		System.out.printf("%-3s %-15s %-12s %-9s%n", "STT", "Ho va ten", "Ngay sinh", "Tong diem");
 
 		System.out.printf("%-3d", stt++);
 		student1.caculation();

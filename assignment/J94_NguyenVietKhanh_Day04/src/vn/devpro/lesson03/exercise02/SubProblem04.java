@@ -21,7 +21,7 @@ public class SubProblem04 {
 		double op = x;
 		int i = 3;
 		while (Math.abs(op) >= eps) {
-			op = op * (-(x * x) / (i * (i - 1)));
+			op = -op * (x * x) / (i * (i - 1));
 			sum += op;
 			i += 2;
 		}

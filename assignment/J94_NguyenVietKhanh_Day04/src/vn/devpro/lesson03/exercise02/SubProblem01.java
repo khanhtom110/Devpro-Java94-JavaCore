@@ -20,11 +20,12 @@ public class SubProblem01 {
 	}
 
 	public static boolean isPrime(int n) {
-		if (n <= 1) {
+		if (n <= 1 || n % 2 == 0) {
 			return false;
 		}
 
-		for (int i = 2; i <= Math.sqrt(n); i++) {
+		int m = (int) Math.sqrt(n);
+		for (int i = 2; i <= m; i++) {
 			if (n % i == 0) {
 				return false;
 			}

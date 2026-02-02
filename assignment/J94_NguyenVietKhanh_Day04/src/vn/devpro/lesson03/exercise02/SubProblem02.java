@@ -34,14 +34,14 @@ public class SubProblem02 {
 	public static void solve(int n) {
 		int sum = 0;
 		int count = 0;
-		int i = 2;
+		int i = 3;
 		while (count < n) {
 			if (isPrime(i)) {
 				count++;
 				sum += i;
 				System.out.print(i + " ");
 			}
-			i++;
+			i += 2; // Chi can check so le
 		}
 		System.out.println();
 		System.out.println("Tong la: " + sum);

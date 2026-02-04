@@ -1,0 +1,2 @@
+-	Trìu tượng: loại bỏ sự tồn tại của đối tượng mà biểu thị chúng bằng các thuộc tính và các phương thức 
+-	Instance variable (biến đối tượng): lưu trữ thông tin thực thể (từ db – lưu trữ trong bộ nhớ trong -> khi cần xử lý -> phải đưa ra bộ nhớ ngoài và đc lưu trữ ở instance variable.

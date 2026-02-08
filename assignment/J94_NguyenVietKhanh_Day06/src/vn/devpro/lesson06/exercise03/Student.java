@@ -86,7 +86,7 @@ public class Student {
 	}
 
 	public void display() {
-		System.out.printf("Ma sinh vien: %25s Ho va ten: %s%n", this.id, this.fullName);
-		System.out.printf("Ngay sinh: %29s Nganh: %s%n", this.major);
+		System.out.printf("Ma sinh vien: %-25s Ho va ten: %-30s%n", this.id, this.fullName);
+		System.out.printf("Ngay sinh: %-28s Nganh: %-30s%n", this.dateOfBirth, this.major);
 	}
 }

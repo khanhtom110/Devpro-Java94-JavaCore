@@ -68,11 +68,11 @@ public class Subject {
 				this.name = sc.nextLine();
 				break;
 			case 2:
-				System.out.println("\tNhap so tin chi moi: ");
+				System.out.print("\tNhap so tin chi moi: ");
 				this.credit = Double.parseDouble(sc.nextLine());
 				break;
 			case 3:
-				System.out.println("\tNhap diem hoc phan moi: ");
+				System.out.print("\tNhap diem hoc phan moi: ");
 				this.mark = Double.parseDouble(sc.nextLine());
 				break;
 			case 0:
@@ -84,7 +84,6 @@ public class Subject {
 	}
 
 	public void display() {
-		int stt = 0;
-		System.out.printf("%3d %-10s %-25s %15f %15f%n", stt++, this.id, this.name, this.credit, this.mark);
+		System.out.printf("%-12s %-25s %15.1f %15.2f%n", this.id, this.name, this.credit, this.mark);
 	}
 }

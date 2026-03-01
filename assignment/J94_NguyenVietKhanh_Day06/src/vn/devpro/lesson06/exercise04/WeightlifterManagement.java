@@ -127,7 +127,8 @@ public class WeightlifterManagement {
 					newWeightlifters[index].display();
 					index++;
 				}
-
+				// Code bi phu thuoc vao du lieu, can tach biet chung ra
+				// Chua xu ly danh sach co 1 nguoi
 				break;
 			case 0:
 				System.exit(0);

@@ -1,0 +1,7 @@
+-	Chỉ khi có kế thừa thì mới có đa hình
+-	Java không kế thừa được nhiều lớp, nhưng có thể triển khai qua interface
+-	Một lớp chỉ kế thừa được 2 yếu tố: phương thức và thuộc tính (ko có constructor) – nhưng phạm vi truy cập phải là protected hoặc public
+-	Đôi với class thì có 3 phạm vi: public, default (Cùng packet mới truy cập được), private
+-	Nạp chồng: là 2 phương thức cùng tên nhưng khác về kiểu của đối hoặc số lượng đối
+-	Ghi đè: giống hệt phương thức của lớp cha(về tên, số lượng đối) nhưng khi in thì chỉ in phương thức ghi đè mới
+-	Interface: la tap hop cac phuong thuc triu tuong, nma ko can viet abstract vao code

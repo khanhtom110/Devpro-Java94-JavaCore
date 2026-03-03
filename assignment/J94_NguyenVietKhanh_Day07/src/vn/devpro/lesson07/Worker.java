@@ -18,7 +18,7 @@ public class Worker extends Employee {
 		this.job = job;
 		this.levelOfSalary = levelOfSalary;
 		this.workingDays = workingDays;
-		setSalary();
+		this.salary = this.levelOfSalary * 3500000 + this.workingDays * 60000;
 	}
 
 	public Job getJob() {
@@ -45,6 +45,14 @@ public class Worker extends Employee {
 		this.workingDays = workingDays;
 	}
 
+	public double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+
 	static Scanner sc = new Scanner(System.in);
 
 	public void input() {
@@ -55,14 +63,6 @@ public class Worker extends Employee {
 		this.levelOfSalary = Double.parseDouble(sc.nextLine());
 		System.out.print("\tNhap so ngay lam viec: ");
 		this.workingDays = Double.parseDouble(sc.nextLine());
-	}
-
-	public void setSalary() {
-		this.salary = this.levelOfSalary * 3500000 + this.workingDays * 60000;
-	}
-
-	public double getSalary() {
-		return this.salary;
 	}
 
 	public void display() {

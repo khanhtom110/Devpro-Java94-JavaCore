@@ -66,7 +66,7 @@ public class Employee {
 	}
 
 	public void display() {
-		System.out.printf("%5s %-15s %-8s  ", this.code, this.firstName, this.lastName);
+		System.out.printf("%5s %-24s  ", this.code, this.firstName + " " + this.lastName, this.lastName);
 		this.dateOfBirth.display();
 	}
 }

@@ -3,34 +3,34 @@ package vn.devpro.lesson07;
 import java.util.Scanner;
 
 public class Worker extends Employee {
-	private Job job;
+
+	private String jobCode;
 	private double levelOfSalary;
 	private double workingDays;
-	private double salary;
+	// private double salary;
 
 	public Worker() {
 		super();
 	}
 
-	public Worker(String code, String firstName, String lastName, Date dateOfBirth, Job job, double levelOfSalary,
-			double workingDays) {
+	public Worker(String code, String firstName, String lastName, Date dateOfBirth, String jobCode,
+			double levelOfSalary, double workingDays) {
 		super(code, firstName, lastName, dateOfBirth);
-		this.job = job;
+		this.jobCode = jobCode;
 		this.levelOfSalary = levelOfSalary;
 		this.workingDays = workingDays;
-		this.salary = this.levelOfSalary * 3500000 + this.workingDays * 60000;
-	}
-
-	public Job getJob() {
-		return job;
-	}
-
-	public void setJob(Job job) {
-		this.job = job;
 	}
 
 	public double getLevelOfSalary() {
 		return levelOfSalary;
+	}
+
+	public String getJobCode() {
+		return jobCode;
+	}
+
+	public void setJobCode(String jobCode) {
+		this.jobCode = jobCode;
 	}
 
 	public void setLevelOfSalary(double levelOfSalary) {
@@ -45,28 +45,30 @@ public class Worker extends Employee {
 		this.workingDays = workingDays;
 	}
 
-	public double getSalary() {
-		return salary;
-	}
-
-	public void setSalary(double salary) {
-		this.salary = salary;
+	public double salary() {
+		return this.levelOfSalary * 3500000 + this.workingDays * 60000;
 	}
 
 	static Scanner sc = new Scanner(System.in);
 
-	public void input() {
-		super.input();
-		job = new Job();
-		job.input();
-		System.out.print("\tNhap bac luong: ");
-		this.levelOfSalary = Double.parseDouble(sc.nextLine());
-		System.out.print("\tNhap so ngay lam viec: ");
-		this.workingDays = Double.parseDouble(sc.nextLine());
-	}
+//	public void input() {
+//		super.input();
+//		job = new Job();
+//		job.input();
+//		System.out.print("\tNhap bac luong: ");
+//		this.levelOfSalary = Double.parseDouble(sc.nextLine());
+//		System.out.print("\tNhap so ngay lam viec: ");
+//		this.workingDays = Double.parseDouble(sc.nextLine());
+//	}
 
 	public void display() {
 		super.display();
-		System.out.printf("  %9.0f %,13.0f%n", this.workingDays, this.getSalary());
+		String jobName = "";
+		// Lay job cua worker
+		Job job = Db.findJobByCode(this.jobCode);
+		if (job != null) {
+			jobName = job.getName();
+		}
+		System.out.printf("%-20s %9.2f %,13.2f%n", jobName, this.workingDays, this.salary());
 	}
 }

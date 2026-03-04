@@ -54,6 +54,6 @@ public class Date {
 	}
 
 	public void display() {
-		System.out.printf("%02d-%02d-%4d", this.day, this.month, this.year);
+		System.out.printf("%02d-%02d-%4d ", this.day, this.month, this.year);
 	}
 }

@@ -1,0 +1,1 @@
+- List.get(i): kp trả về vị trí phần tử của mảng mà là trả về 1 con trỏ, trỏ vào phần tử trong mảng

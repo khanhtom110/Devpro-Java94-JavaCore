@@ -1,12 +1,12 @@
 package vn.devpro.java94.database;
 
-import java.security.Provider;
 import java.util.ArrayList;
 import java.util.Date;
 
 import vn.devpro.java94.model.Customer;
 import vn.devpro.java94.model.Order;
 import vn.devpro.java94.model.Product;
+import vn.devpro.java94.model.Provider;
 
 public class StoreDb {
 	private static int providerId = 1;
@@ -21,7 +21,11 @@ public class StoreDb {
 
 	public static void initDb() {
 		providers.add(new Provider(providerId++, "NCC" + new Date().getTime() + providerId, "Son Ha"));
-		providers.add(new (providerId++, "NCC" + new Date().getTime() + providerId, "Son Ha Xanh"));
-		providers.add(new (providerId++, "NCC" + new Date().getTime() + providerId, "Toan Thang"));
+		providers.add(new Provider(providerId++, "NCC" + new Date().getTime() + providerId, "Son Ha Xanh"));
+		providers.add(new Provider(providerId++, "NCC" + new Date().getTime() + providerId, "Toan Thang"));
+
+		products.add(new Product(productId++, 2, "NCC" + new Date().getTime() + productId, "Noi com", 1000000));
+		products.add(new Product(productId++, 1, "NCC" + new Date().getTime() + productId, "Tu Lanh", 20000000));
+		products.add(new Product(productId++, 3, "NCC" + new Date().getTime() + productId, "Tivi", 17000000));
 	}
 }

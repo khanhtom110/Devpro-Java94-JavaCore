@@ -24,8 +24,41 @@ public class StoreDb {
 		providers.add(new Provider(providerId++, "NCC" + new Date().getTime() + providerId, "Son Ha Xanh"));
 		providers.add(new Provider(providerId++, "NCC" + new Date().getTime() + providerId, "Toan Thang"));
 
-		products.add(new Product(productId++, 2, "NCC" + new Date().getTime() + productId, "Noi com", 1000000));
-		products.add(new Product(productId++, 1, "NCC" + new Date().getTime() + productId, "Tu Lanh", 20000000));
-		products.add(new Product(productId++, 3, "NCC" + new Date().getTime() + productId, "Tivi", 17000000));
+		products.add(new Product(productId++, 2, "SP" + new Date().getTime() + productId, "Noi com", 1000000));
+		products.add(new Product(productId++, 1, "SP" + new Date().getTime() + productId, "Tu Lanh", 20000000));
+		products.add(new Product(productId++, 3, "SP" + new Date().getTime() + productId, "Tivi", 17000000));
 	}
+
+	public static ArrayList<Provider> getProviders() {
+		return providers;
+	}
+
+	public static void setProviders(ArrayList<Provider> providers) {
+		StoreDb.providers = providers;
+	}
+
+	public static int getProviderId() {
+		return providerId;
+	}
+
+	public static void setProviderId(int providerId) {
+		StoreDb.providerId = providerId;
+	}
+
+	public static ArrayList<Product> getProducts() {
+		return products;
+	}
+
+	public static void setProducts(ArrayList<Product> products) {
+		StoreDb.products = products;
+	}
+
+	public static int getProductId() {
+		return productId;
+	}
+
+	public static void setProductId(int productId) {
+		StoreDb.productId = productId;
+	}
+
 }

@@ -1,5 +1,7 @@
 package vn.devpro.java94.model;
 
+import vn.devpro.java94.service.ProviderService;
+
 public class Product {
 	private int id;
 	private int providerId;
@@ -9,7 +11,12 @@ public class Product {
 
 	public void display() {
 		// Lay provider
-		System.out.printf("%3d %30s %12s %-35s %,13.2d%n", this.id, "Ten NCC", this.code, this.name, this.price);
+		Provider provider = ProviderService.getById(this.providerId);
+		String providerName = "";
+		if (providerName != null) {
+			providerName = provider.getName();
+		}
+		System.out.printf("%3d %30s %17s %-35s %,13.2f%n", this.id, providerName, this.code, this.name, this.price);
 	}
 
 	public Product() {

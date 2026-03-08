@@ -6,7 +6,7 @@ public class Provider {
 	private String name;
 
 	public void display() {
-		System.out.printf("%3d %12s %-30s%n", this.id, this.code, this.name);
+		System.out.printf("%3d %17s %-30s%n", this.id, this.code, this.name);
 	}
 
 	public Provider() {

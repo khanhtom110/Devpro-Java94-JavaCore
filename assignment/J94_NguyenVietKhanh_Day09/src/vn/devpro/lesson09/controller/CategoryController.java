@@ -93,7 +93,7 @@ public class CategoryController {
 		}
 
 		// Kiem tra ton tai
-		if (!CategoryService.findByCode(code)) {
+		if (!CategoryService.existsByCode(code)) {
 			System.out.println("Danh muc khong ton tai");
 			return;
 		}
@@ -113,15 +113,36 @@ public class CategoryController {
 		}
 
 		// update o service
+		Category category = CategoryService.getByCode(code);
+		int index = CategoryService.findByCode(code);
+		category.setName(name);
+		CategoryService.update(index, category);
+		System.out.println("Cap nhat thanh cong!");
 	}
 
 	private static void delete() {
 		// TODO Auto-generated method stub
+		System.out.println("\tXOA DANH MUC");
+		System.out.print("Nhap ma danh muc can xoa: ");
+		String code = sc.nextLine();
+		if (code == null || code.trim().length() <= 0) {
+			System.out.println("Khong duoc de trong");
+			return;
+		}
 
+		// Kiem tra ton tai
+		if (!CategoryService.existsByCode(code)) {
+			System.out.println("Danh muc khong ton tai");
+			return;
+		}
+		int index = CategoryService.findByCode(code);
+		CategoryService.delete(index);
+		System.out.println("Xoa thanh cong!");
 	}
 
 	private static void sort() {
 		// TODO Auto-generated method stub
-
+		CategoryService.sort(CategoryService.findAll());
+		display();
 	}
 }

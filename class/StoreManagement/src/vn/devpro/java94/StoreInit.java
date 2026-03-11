@@ -2,6 +2,8 @@ package vn.devpro.java94;
 
 import java.util.Scanner;
 
+import vn.devpro.java94.controller.CartController;
+import vn.devpro.java94.controller.CustomerController;
 import vn.devpro.java94.controller.ProductController;
 import vn.devpro.java94.controller.ProviderController;
 import vn.devpro.java94.database.StoreDb;
@@ -51,10 +53,10 @@ public class StoreInit {
 				ProductController.execute();
 				break;
 			case 3:
-
+				CustomerController.execute();
 				break;
 			case 4:
-
+				CartController.execute();
 				break;
 			default:
 				System.out.println("Lua chon khong hop le, xin chon lai");

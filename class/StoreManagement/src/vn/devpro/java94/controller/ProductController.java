@@ -1,5 +1,7 @@
 package vn.devpro.java94.controller;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -47,7 +49,7 @@ public class ProductController {
 
 	}
 
-	private static void display() {
+	public static void display() {
 		// TODO Auto-generated method stub
 		List<Product> products = ProductService.findAll();
 		System.out.println("\t\tDANH SACH SAN PHAM");
@@ -175,5 +177,17 @@ public class ProductController {
 		}
 		ProductService.delete(index);
 		System.out.println("Xoa SP thanh cong!");
+	}
+
+	private static void sort(List<Product> products) {
+		Collections.sort(products, new Comparator<Product>() {
+			@Override
+			public int compare(Product o1, Product o2) {
+				// TODO Auto-generated method stub
+				return o1.getName().compareTo(o2.getName());
+			}
+
+		});
+		display();
 	}
 }

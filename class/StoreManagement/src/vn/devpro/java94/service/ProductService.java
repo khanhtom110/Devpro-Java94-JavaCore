@@ -63,4 +63,14 @@ public class ProductService {
 	public static void delete(int index) {
 		StoreDb.getProducts().remove(index);
 	}
+
+	public static Product getById(int productId) {
+		// TODO Auto-generated method stub
+		for (Product product : StoreDb.getProducts()) {
+			if (product.getId() == productId) {
+				return product;
+			}
+		}
+		return null;
+	}
 }

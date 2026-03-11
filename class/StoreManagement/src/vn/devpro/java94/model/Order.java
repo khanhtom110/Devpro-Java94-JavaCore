@@ -1,5 +1,65 @@
 package vn.devpro.java94.model;
 
+import java.time.LocalDate;
+
 public class Order {
+	private int id;
+	private int customerId;
+	private LocalDate createDate;
+	private String status;
+	private double totalPrice;
+
+	public Order() {
+		super();
+	}
+
+	public Order(int id, int customerId, LocalDate createDate, String status, double totalPrice) {
+		super();
+		this.id = id;
+		this.customerId = customerId;
+		this.createDate = createDate;
+		this.status = status;
+		this.totalPrice = totalPrice;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
+
+	public LocalDate getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(LocalDate createDate) {
+		this.createDate = createDate;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
 
 }

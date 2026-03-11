@@ -31,14 +31,17 @@ public class ShopDb {
 
 		// Add product
 		products.add(
-				new Product(productId++, 1, "TSH" + new Date().getTime() + productId, "Unisex Cotton T-Shirt", 300000));
+				new Product(productId++, 1, "SP" + new Date().getTime() + productId, "Unisex Cotton T-Shirt", 300000));
 		products.add(
-				new Product(productId++, 1, "SHR" + new Date().getTime() + productId, "Slim-fit Office Shirt", 200000));
+				new Product(productId++, 1, "SP" + new Date().getTime() + productId, "Slim-fit Office Shirt", 200000));
 		products.add(
-				new Product(productId++, 2, "JEA" + new Date().getTime() + productId, "Classic Blue Jeans", 500000));
+				new Product(productId++, 2, "SP" + new Date().getTime() + productId, "Classic Blue Jeans", 500000));
 		products.add(
-				new Product(productId++, 3, "DRS" + new Date().getTime() + productId, "Floral Summer Dress", 250000));
-		products.add(new Product(productId++, 4, "BEL" + new Date().getTime() + productId, "Leather Belt", 100000));
+				new Product(productId++, 2, "SP" + new Date().getTime() + productId, "Oversize Beggy Jeans", 500000));
+		products.add(
+				new Product(productId++, 3, "SP" + new Date().getTime() + productId, "Floral Summer Dress", 250000));
+		products.add(new Product(productId++, 3, "SP" + new Date().getTime() + productId, "Beach Dress", 250000));
+		products.add(new Product(productId++, 4, "SP" + new Date().getTime() + productId, "Leather Belt", 100000));
 
 		// Add customer
 		customers.add(new Customer(customerId++, "CUS" + new Date().getTime() + customerId, "Nguyen Viet Khanh",
@@ -53,11 +56,11 @@ public class ShopDb {
 		orders.add(new Order(orderId++, 2, "ORD" + new Date().getTime() + orderId, 750000));
 
 		// Add product in order
-		productInOrders.add(new ProductInOrder(productId++, 1, 1, 1));// 300
-		productInOrders.add(new ProductInOrder(productId++, 3, 1, 1));// 500
-		productInOrders.add(new ProductInOrder(productId++, 5, 1, 1));// 100-Khanh mua 900k
-		productInOrders.add(new ProductInOrder(productId++, 3, 2, 1));// 500-Alice mua 750k
-		productInOrders.add(new ProductInOrder(productId++, 4, 2, 1));// 250
+		productInOrders.add(new ProductInOrder(productInOrderId++, 1, 1, 1));// 300
+		productInOrders.add(new ProductInOrder(productInOrderId++, 3, 1, 1));// 500
+		productInOrders.add(new ProductInOrder(productInOrderId++, 7, 1, 1));// 100-Khanh mua 900k
+		productInOrders.add(new ProductInOrder(productInOrderId++, 4, 2, 1));// 500-Alice mua 750k
+		productInOrders.add(new ProductInOrder(productInOrderId++, 6, 2, 1));// 250
 	}
 
 	public static ArrayList<Category> getCategories() {
@@ -106,6 +109,14 @@ public class ShopDb {
 
 	public static void setProductInOrderId(int productInOrderId) {
 		ShopDb.productInOrderId = productInOrderId;
+	}
+
+	public static ArrayList<Product> getProducts() {
+		return products;
+	}
+
+	public static void setProducts(ArrayList<Product> products) {
+		ShopDb.products = products;
 	}
 
 }

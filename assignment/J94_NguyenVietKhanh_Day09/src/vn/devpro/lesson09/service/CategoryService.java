@@ -19,7 +19,7 @@ public class CategoryService {
 		ShopDb.getCategories().add(category);
 	}
 
-	public static boolean findByName(String name) {
+	public static boolean existsByName(String name) {
 		// TODO Auto-generated method stub
 		for (Category category : ShopDb.getCategories()) {
 			if (category.getName().equalsIgnoreCase(name)) {
@@ -78,6 +78,26 @@ public class CategoryService {
 				return o1.getName().compareToIgnoreCase(o2.getName());
 			}
 		});
+	}
+
+	public static Category getById(int categoryId) {
+		// TODO Auto-generated method stub
+		for (Category category : ShopDb.getCategories()) {
+			if (category.getId() == categoryId) {
+				return category;
+			}
+		}
+		return null;
+	}
+
+	public static Category getByName(String categoryName) {
+		// TODO Auto-generated method stub
+		for (Category category : ShopDb.getCategories()) {
+			if (category.getName().equalsIgnoreCase(categoryName)) {
+				return category;
+			}
+		}
+		return null;
 	}
 
 }

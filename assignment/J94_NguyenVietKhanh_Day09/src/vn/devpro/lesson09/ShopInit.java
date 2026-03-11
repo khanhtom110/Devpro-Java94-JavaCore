@@ -3,6 +3,7 @@ package vn.devpro.lesson09;
 import java.util.Scanner;
 
 import vn.devpro.lesson09.controller.CategoryController;
+import vn.devpro.lesson09.controller.ProductController;
 import vn.devpro.lesson09.database.ShopDb;
 
 public class ShopInit {
@@ -34,7 +35,7 @@ public class ShopInit {
 	private static void administration() {
 		do {
 			System.out.println("\t\tQUAN TRI HE THONG");
-			System.out.println("\tChon chuc nang quan tri");
+			System.out.println("Chon chuc nang quan tri");
 			System.out.println("\t1.Quan tri thong tin danh muc/loai san pham");
 			System.out.println("\t2.Quan tri thong tin san pham");
 			System.out.println("\t3.Quan tri thong tin khach hang");
@@ -48,7 +49,7 @@ public class ShopInit {
 				CategoryController.execute();
 				break;
 			case 2:
-
+				ProductController.execute();
 				break;
 			case 3:
 

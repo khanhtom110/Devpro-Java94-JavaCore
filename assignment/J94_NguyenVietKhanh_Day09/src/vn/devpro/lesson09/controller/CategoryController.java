@@ -13,8 +13,8 @@ public class CategoryController {
 
 	public static void execute() {
 		do {
-			System.out.println("\t\tCAP NHAT THONG TIN DANH MUC SAN PHAM");
-			System.out.println("Chon mot chuc nang cap nhat");
+			System.out.println("\t\tQUAN TRI THONG TIN DANH MUC SAN PHAM");
+			System.out.println("Chon mot chuc nang quan tri");
 			System.out.println("\t1.Hien thi danh sach");
 			System.out.println("\t2.Them moi");
 			System.out.println("\t3.Sua thong tin");
@@ -69,8 +69,8 @@ public class CategoryController {
 		}
 
 		// Kiem tra th trung ten
-		if (CategoryService.findByName(name)) {
-			System.out.println("Ten da bi trung");
+		if (CategoryService.existsByName(name)) {
+			System.out.println("Ten da bi trung, vui long nhap ten khac");
 			return;
 		}
 		category.setName(name);
@@ -107,7 +107,7 @@ public class CategoryController {
 		}
 
 		// Kiem tra th trung ten
-		if (CategoryService.findByName(name)) {
+		if (CategoryService.existsByName(name)) {
 			System.out.println("Ten da bi trung");
 			return;
 		}

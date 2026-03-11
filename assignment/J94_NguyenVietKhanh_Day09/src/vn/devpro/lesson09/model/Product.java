@@ -1,5 +1,7 @@
 package vn.devpro.lesson09.model;
 
+import vn.devpro.lesson09.service.CategoryService;
+
 public class Product {
 	private int id;
 	private int categoryId;
@@ -8,7 +10,12 @@ public class Product {
 	private double price;
 
 	public void display() {
-		System.out.printf("%3d %3d %17s %-25s %,13.2f%n", this.id, this.categoryId, this.code, this.name, this.price);
+		Category category = CategoryService.getById(categoryId);
+		String categoryName = "";
+		if (category != null) {
+			categoryName = category.getName();
+		}
+		System.out.printf("%3d %-15s %17s %-25s %,13.2f%n", this.id, categoryName, this.code, this.name, this.price);
 	}
 
 	public Product() {

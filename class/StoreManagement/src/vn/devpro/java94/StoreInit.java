@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import vn.devpro.java94.controller.CartController;
 import vn.devpro.java94.controller.CustomerController;
+import vn.devpro.java94.controller.OrderController;
 import vn.devpro.java94.controller.ProductController;
 import vn.devpro.java94.controller.ProviderController;
 import vn.devpro.java94.database.StoreDb;
@@ -41,8 +42,9 @@ public class StoreInit {
 			System.out.println("\tChon chuc nang quan tri");
 			System.out.println("\t1.Quan tri thong tin nha cung cap");
 			System.out.println("\t2.Quan tri thong tin san pham");
-			System.out.println("\t3.Quan tri thong tin khach hang");
-			System.out.println("\t4.Quan tri thong tin don hang");
+			System.out.println("\t3.Quan ly thong tin khach hang");
+			System.out.println("\t4.Quan ly don hang");
+			System.out.println("\t0.Quay lai");
 			System.out.print("Lua chon cua ban la: ");
 			int choose = Integer.parseInt(sc.nextLine());
 			switch (choose) {
@@ -56,8 +58,10 @@ public class StoreInit {
 				CustomerController.execute();
 				break;
 			case 4:
-				CartController.execute();
+				OrderController.execute();
 				break;
+			case 0:
+				return;
 			default:
 				System.out.println("Lua chon khong hop le, xin chon lai");
 			}
@@ -66,7 +70,7 @@ public class StoreInit {
 
 	private static void customer() {
 		// TODO Auto-generated method stub
-
+		CartController.execute();
 	}
 
 }

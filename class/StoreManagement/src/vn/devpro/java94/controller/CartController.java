@@ -3,6 +3,7 @@ package vn.devpro.java94.controller;
 import java.util.Scanner;
 
 import vn.devpro.java94.dto.Cart;
+import vn.devpro.java94.service.OrderService;
 
 public class CartController {
 	static Scanner sc = new Scanner(System.in);
@@ -22,6 +23,7 @@ public class CartController {
 			System.out.println("\t5.Xoa hang trong gio");
 			System.out.println("\t6.Xoa toan bo san pham trong gio");
 			System.out.println("\t7.Dat hang");
+			System.out.println("\t8.Xem don hang");
 			System.out.println("\t0.Quay lai");
 			System.out.print("Lua chon cua ban la: ");
 			int choose = Integer.parseInt(sc.nextLine());
@@ -46,7 +48,12 @@ public class CartController {
 				break;
 			case 7:
 				cart.placeOrder();
-				break;
+				System.out.println("\tBan da dat hang thanh cong!");
+				cart = new Cart(); // Xoa gio hang sau khi dat
+				return;
+			case 8:
+				OrderService.displayAll();
+				return;
 			case 0:
 				return;
 			default:

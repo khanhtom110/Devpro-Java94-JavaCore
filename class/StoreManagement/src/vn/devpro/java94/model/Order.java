@@ -2,12 +2,22 @@ package vn.devpro.java94.model;
 
 import java.time.LocalDate;
 
+import vn.devpro.java94.service.CustomerService;
+
 public class Order {
 	private int id;
 	private int customerId;
 	private LocalDate createDate;
 	private String status;
 	private double totalPrice;
+
+	public void display() {
+		String customerName = "Khach vang lai";
+		if (customerId > 0) {
+			customerName = CustomerService.getById(customerId).getName();
+		}
+		System.out.printf("%-25s %10s %-50s %,15.2f%n", customerName, createDate, status, totalPrice);
+	}
 
 	public Order() {
 		super();

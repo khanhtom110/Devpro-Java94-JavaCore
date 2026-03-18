@@ -1,10 +1,17 @@
 package vn.devpro.java94.dto;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import vn.devpro.java94.database.StoreDb;
+import vn.devpro.java94.model.Order;
+import vn.devpro.java94.model.OrderProduct;
 import vn.devpro.java94.model.Product;
+import vn.devpro.java94.service.CustomerService;
+import vn.devpro.java94.service.OrderProductService;
+import vn.devpro.java94.service.OrderService;
 import vn.devpro.java94.service.ProductService;
 
 public class Cart {
@@ -129,5 +136,48 @@ public class Cart {
 	public void placeOrder() {
 		// TODO Auto-generated method stub
 
+		// Tao mot doi tuong order
+		Order order = new Order();
+		order.setId(StoreDb.getOrderId());
+		StoreDb.setOrderId(StoreDb.getOrderId() + 1);
+		order.setCreateDate(LocalDate.now());
+		order.setStatus("Don hang khoi tao");
+		order.setTotalPrice(this.grandTotal() * 1.08);// tinh phi VAT
+
+		// Chon khach hanh
+		System.out.println("\tNhap ma khach hang: ");
+		String customerCode = sc.nextLine();
+		int index = CustomerService.findByCode(customerCode);
+		if (index != -1) {
+			// lay id cua khach
+			int customerId = StoreDb.getCustomers().get(index).getId();
+			order.setCustomerId(customerId);
+		} else {
+			// Khach chua tao tai khoan
+			order.setId(0);
+		}
+
+		// Luu cac san pham trong gio hang vao db
+		for (CartItem cartItem : cartItems) {
+			// Lay product trong tung cartItem
+			Product product = ProductService.getById(cartItem.getProductId());
+			// Tao 1 doi tuong Product trong order
+			OrderProduct orderProduct = new OrderProduct();
+			orderProduct.setId(StoreDb.getOrderProductId());
+			StoreDb.setOrderId(StoreDb.getOrderProductId() + 1);
+			orderProduct.setOrderId(order.getId());
+			orderProduct.setProductId(product.getId());
+			orderProduct.setProductId(product.getId());
+			orderProduct.setName(product.getName());
+			orderProduct.setPrice(product.getPrice());
+
+			orderProduct.setQuantity(cartItem.getQuantity());
+
+			OrderProductService.save(orderProduct);
+
+		}
+
+		// Luu don hang
+		OrderService.save(order);
 	}
 }

@@ -102,4 +102,20 @@ public class StoreDb {
 		StoreDb.orderProducts = orderProducts;
 	}
 
+	public static int getOrderId() {
+		return orderId;
+	}
+
+	public static void setOrderId(int orderId) {
+		StoreDb.orderId = orderId;
+	}
+
+	public static ArrayList<Order> getOrders() {
+		return orders;
+	}
+
+	public static void setOrders(ArrayList<Order> orders) {
+		StoreDb.orders = orders;
+	}
+
 }

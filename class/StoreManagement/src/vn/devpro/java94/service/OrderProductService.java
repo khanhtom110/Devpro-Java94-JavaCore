@@ -16,4 +16,8 @@ public class OrderProductService {
 		}
 		return orderProducts;
 	}
+
+	public static void save(OrderProduct orderProduct) {
+		StoreDb.getOrderProducts().add(orderProduct);
+	}
 }

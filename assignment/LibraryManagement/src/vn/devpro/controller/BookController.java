@@ -65,7 +65,7 @@ public class BookController {
 
 	}
 
-	private static void read() {
+	public static void read() {
 		// TODO Auto-generated method stub
 		List<Book> books = BookService.findAll();
 		System.out.println("\t\tDANH SACH CAC LOAI SACH");
@@ -226,7 +226,7 @@ public class BookController {
 		String code = sc.nextLine();
 		int index = BookService.findByCode(code);
 		if (index == -1) {
-			System.out.println("Ma sach khong chinh xac");
+			System.out.println("\tMa sach khong chinh xac");
 			return;
 		}
 		BookService.delete(index);
@@ -239,12 +239,17 @@ public class BookController {
 		read();
 	}
 
-	private static void getByCategory() {
+	public static void getByCategory() {
 		// TODO Auto-generated method stub
 		System.out.print("\tNhap ma the loai: ");
 		String categoryCode = sc.nextLine();
 		if (categoryCode == null || categoryCode.trim().length() <= 0) {
 			System.out.println("\tKhong duoc de trong");
+			return;
+		}
+		int index = CategoryService.findByCode(categoryCode);
+		if (index == -1) {
+			System.out.println("\tMa the loai khong chinh xac");
 			return;
 		}
 		List<Book> books = BookService.getByCategory(categoryCode);
@@ -256,12 +261,17 @@ public class BookController {
 		}
 	}
 
-	private static void getByAuthor() {
+	public static void getByAuthor() {
 		// TODO Auto-generated method stub
 		System.out.print("\tNhap ma tac gia: ");
 		String authorCode = sc.nextLine();
 		if (authorCode == null || authorCode.trim().length() <= 0) {
 			System.out.println("\tKhong duoc de trong");
+			return;
+		}
+		int index = AuthorService.findByCode(authorCode);
+		if (index == -1) {
+			System.out.println("\tMa tac gia khong chinh xac");
 			return;
 		}
 		List<Book> books = BookService.getByAuthor(authorCode);
@@ -273,7 +283,7 @@ public class BookController {
 		}
 	}
 
-	private static void getByName() {
+	public static void getByName() {
 		// TODO Auto-generated method stub
 		System.out.print("\tNhap ten sach: ");
 		String name = sc.nextLine();

@@ -60,7 +60,7 @@ public class ReaderController {
 		}
 	}
 
-	private static void create() {
+	public static void create() {
 		// TODO Auto-generated method stub
 		System.out.println("\n\t\tTHEM MOI NGUOI DOC");
 		System.out.print("\tNhap ho nguoi doc: ");
@@ -120,7 +120,7 @@ public class ReaderController {
 		LibraryDb.setReaderId(LibraryDb.getReaderId() + 1);
 
 		ReaderService.save(reader);
-		System.out.println("Tao nguoi doc thanh cong");
+		System.out.println("Tao nguoi doc thanh cong! Ma nguoi duoc cua ban la: " + reader.getCode());
 	}
 
 	private static void update() {

@@ -4,8 +4,11 @@ import java.util.Scanner;
 
 import vn.devpro.controller.AuthorController;
 import vn.devpro.controller.BookController;
+import vn.devpro.controller.BorrowTicketController;
 import vn.devpro.controller.CategoryController;
+import vn.devpro.controller.LoanReceiptController;
 import vn.devpro.controller.ReaderController;
+import vn.devpro.controller.StatisticController;
 import vn.devpro.database.LibraryDb;
 
 public class LibraryManagement {
@@ -19,8 +22,8 @@ public class LibraryManagement {
 		do {
 			System.out.println("\t\tCHUONG TRINH QUAN LY THU VIEN");
 			System.out.println("Moi chon chuc nang");
-			System.out.println("\t1. Chuc nang nguoi quan tri");
-			System.out.println("\t2. Nguoi doc");
+			System.out.println("\t1.Chuc nang nguoi quan tri");
+			System.out.println("\t2.Nguoi doc");
 			System.out.print("Lua chon cua ban: ");
 			int choose = Integer.parseInt(sc.nextLine());
 			switch (choose) {
@@ -44,6 +47,8 @@ public class LibraryManagement {
 			System.out.println("\t2.Quan tri thong tin the loai");
 			System.out.println("\t3.Quan tri thong tin tac gia");
 			System.out.println("\t4.Quan tri thong tin sach");
+			System.out.println("\t5.Quan tri thong tin phieu muon sach");
+			System.out.println("\t6.Thong ke");
 			System.out.println("\t0.Quay lai");
 			System.out.print("Lua chon cua ban la: ");
 			int choose = Integer.parseInt(sc.nextLine());
@@ -60,6 +65,12 @@ public class LibraryManagement {
 			case 4:
 				BookController.execute();
 				break;
+			case 5:
+				LoanReceiptController.execute();
+				break;
+			case 6:
+				StatisticController.execute();
+				break;
 			case 0:
 				return;
 			default:
@@ -70,7 +81,27 @@ public class LibraryManagement {
 
 	private static void customer() {
 		// TODO Auto-generated method stub
-
+		do {
+			System.out.println("\t\tCHUC NANG NGUOI DOC");
+			System.out.println("\tChon chuc nang");
+			System.out.println("\t1.Dang ky tai khoan");
+			System.out.println("\t2.Da co tai khoan");
+			System.out.println("\t0.Quay lai");
+			System.out.print("Lua chon cua ban la: ");
+			int choose = Integer.parseInt(sc.nextLine());
+			switch (choose) {
+			case 1:
+				ReaderController.create();
+				BorrowTicketController.execute();
+			case 2:
+				BorrowTicketController.execute();
+				break;
+			case 0:
+				return;
+			default:
+				System.out.println("Lua chon khong hop le, xin chon lai");
+			}
+		} while (true);
 	}
 
 }

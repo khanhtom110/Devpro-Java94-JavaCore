@@ -6,6 +6,8 @@ import java.util.Date;
 import vn.devpro.model.Author;
 import vn.devpro.model.Book;
 import vn.devpro.model.Category;
+import vn.devpro.model.LoanDetail;
+import vn.devpro.model.LoanReceipt;
 import vn.devpro.model.Reader;
 
 public class LibraryDb {
@@ -13,11 +15,15 @@ public class LibraryDb {
 	private static int readerId = 1;
 	private static int bookId = 1;
 	private static int authorId = 1;
+	private static int loanReceiptId = 1;
+	private static int loanDetailId = 1;
 
 	private static ArrayList<Category> categories = new ArrayList<Category>();
 	private static ArrayList<Book> books = new ArrayList<Book>();
 	private static ArrayList<Reader> readers = new ArrayList<Reader>();
 	private static ArrayList<Author> authors = new ArrayList<Author>();
+	private static ArrayList<LoanReceipt> loanReceipts = new ArrayList<LoanReceipt>();
+	private static ArrayList<LoanDetail> loanDetails = new ArrayList<LoanDetail>();
 
 	public static void init() {
 		categories.add(new Category(categoryId++, "CAT" + new Date().getTime() + categoryId, "Thieu nhi"));
@@ -40,28 +46,28 @@ public class LibraryDb {
 		readers.add(new Reader(readerId++, "RD" + new Date().getTime() + readerId, "Nguyen Van", "An", "15-05-2003",
 				"Nam", true));
 		readers.add(new Reader(readerId++, "RD" + new Date().getTime() + readerId, "Tran Thi", "Binh", "22-08-2004",
-				"Nu", true));
+				"Nu", false));
 		readers.add(new Reader(readerId++, "RD" + new Date().getTime() + readerId, "Le Hoang", "Nam", "10-01-2005",
 				"Nam", true));
 		readers.add(new Reader(readerId++, "RD" + new Date().getTime() + readerId, "Pham Minh", "Thu", "30-11-2003",
-				"Nu", true));
+				"Nu", false));
 		readers.add(new Reader(readerId++, "RD" + new Date().getTime() + readerId, "Vo Thanh", "Long", "05-03-2004",
 				"Nam", true));
 		readers.add(new Reader(readerId++, "RD" + new Date().getTime() + readerId, "Dang Thu", "Thao", "12-12-2005",
-				"Nu", true));
+				"Nu", false));
 		readers.add(new Reader(readerId++, "RD" + new Date().getTime() + readerId, "Bui Xuan", "Bach", "18-07-2003",
 				"Nam", true));
 		readers.add(new Reader(readerId++, "RD" + new Date().getTime() + readerId, "Ngo Bao", "Ngoc", "25-09-2004",
 				"Nu", true));
 		readers.add(new Reader(readerId++, "RD" + new Date().getTime() + readerId, "Ly Gia", "Han", "08-06-2005", "Nu",
-				true));
+				false));
 		readers.add(new Reader(readerId++, "RD" + new Date().getTime() + readerId, "Duong Quoc", "Anh", "20-02-2003",
-				"Nam", true));
+				"Nam", false));
 
 		// Sách của Nguyễn Nhật Ánh (Author 4 - Thể loại Thiếu nhi 1)
 		books.add(new Book(bookId++, "BK" + new Date().getTime() + bookId, 4, 1, "Cho toi xin mot ve di tuoi tho", 220,
 				15));
-		books.add(new Book(bookId++, "BK" + new Date().getTime() + bookId, 4, 1, "Mat biec", 250, 10));
+		books.add(new Book(bookId++, "BK" + new Date().getTime() + bookId, 4, 1, "Mat biec", 250, 1));
 		books.add(new Book(bookId++, "BK" + new Date().getTime() + bookId, 4, 1, "Kinh van hoa", 350, 20));
 
 		// Sách Văn học Kinh điển (Các Author 1, 2, 3, 5 - Thể loại 1 hoặc tùy chọn)
@@ -146,6 +152,38 @@ public class LibraryDb {
 
 	public static void setAuthors(ArrayList<Author> authors) {
 		LibraryDb.authors = authors;
+	}
+
+	public static int getLoanReceiptId() {
+		return loanReceiptId;
+	}
+
+	public static void setLoanReceiptId(int loanReceiptId) {
+		LibraryDb.loanReceiptId = loanReceiptId;
+	}
+
+	public static int getLoanDetailId() {
+		return loanDetailId;
+	}
+
+	public static void setLoanDetailId(int loanDetailId) {
+		LibraryDb.loanDetailId = loanDetailId;
+	}
+
+	public static ArrayList<LoanReceipt> getLoanReceipts() {
+		return loanReceipts;
+	}
+
+	public static void setLoanReceipts(ArrayList<LoanReceipt> loanReceipts) {
+		LibraryDb.loanReceipts = loanReceipts;
+	}
+
+	public static ArrayList<LoanDetail> getLoanDetails() {
+		return loanDetails;
+	}
+
+	public static void setLoanDetails(ArrayList<LoanDetail> loanDetails) {
+		LibraryDb.loanDetails = loanDetails;
 	}
 
 }

@@ -58,6 +58,16 @@ public class ReaderService {
 		return -1;
 	}
 
+	public static boolean existsByCode(String code) {
+		// TODO Auto-generated method stub
+		for (int i = 0; i < LibraryDb.getReaders().size(); i++) {
+			if (LibraryDb.getReaders().get(i).getCode().equals(code)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public static void delete(int index) {
 		// TODO Auto-generated method stub
 		LibraryDb.getReaders().remove(index);

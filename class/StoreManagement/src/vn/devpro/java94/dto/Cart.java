@@ -71,7 +71,7 @@ public class Cart {
 			// SP chua co trong gio -> Them moi SP vao gio hang
 			cartItems.add(new CartItem(product.getId(), quantity));
 		} else {
-			// SP da co trong gio hang -> Cap nhat so luong moi
+			// SP da co trong gio hang -> Cap nhat so luong moi trong gio hang
 			int currentQuantity = cartItems.get(index).getQuantity();
 			cartItems.get(index).setQuantity(currentQuantity + quantity);
 		}
@@ -159,7 +159,8 @@ public class Cart {
 
 		// Luu cac san pham trong gio hang vao db
 		for (CartItem cartItem : cartItems) {
-			// Lay product trong tung cartItem
+			// Lay product trong tung cartItem - Khong lay product tu db (Neu nguoi ban thay
+			// doi gia thi customer van duoc thanh toan theo gia cu trong cart)
 			Product product = ProductService.getById(cartItem.getProductId());
 			// Tao 1 doi tuong Product trong order
 			OrderProduct orderProduct = new OrderProduct();
@@ -167,9 +168,8 @@ public class Cart {
 			StoreDb.setOrderId(StoreDb.getOrderProductId() + 1);
 			orderProduct.setOrderId(order.getId());
 			orderProduct.setProductId(product.getId());
-			orderProduct.setProductId(product.getId());
 			orderProduct.setName(product.getName());
-			orderProduct.setPrice(product.getPrice());
+			orderProduct.setPrice(product.getPrice()); // Duoc vi gia nay la product lay tu cart chu khong phai db
 
 			orderProduct.setQuantity(cartItem.getQuantity());
 

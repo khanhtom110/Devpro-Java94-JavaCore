@@ -116,4 +116,14 @@ public class BookService {
 		return books;
 	}
 
+	public static Book getById(int bookId) {
+		// TODO Auto-generated method stub
+		for (Book book : LibraryDb.getBooks()) {
+			if (book.getId() == bookId) {
+				return book;
+			}
+		}
+		return null;
+	}
+
 }

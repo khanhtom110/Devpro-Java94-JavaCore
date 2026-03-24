@@ -65,7 +65,7 @@ public class BookService {
 		LibraryDb.getBooks().remove(index);
 	}
 
-	public static void sort() {
+	public static void sortByName() {
 		// TODO Auto-generated method stub
 		for (int i = 0; i < LibraryDb.getBooks().size() - 1; i++) {
 			for (int j = LibraryDb.getBooks().size() - 1; j > i; j--) {
@@ -124,6 +124,21 @@ public class BookService {
 			}
 		}
 		return null;
+	}
+
+	public static void sortByQuantity(List<Book> books) {
+		// TODO Auto-generated method stub
+		for (int i = 0; i < books.size() - 1; i++) {
+			for (int j = books.size() - 1; j > i; j--) {
+				Book currentBook = books.get(j);
+				Book previousBook = books.get(j - 1);
+				if (currentBook.getQuantity() < previousBook.getQuantity()) {
+					Book tmp = previousBook;
+					books.set(j - 1, currentBook);
+					books.set(j, tmp);
+				}
+			}
+		}
 	}
 
 }

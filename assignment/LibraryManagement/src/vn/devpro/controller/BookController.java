@@ -235,7 +235,7 @@ public class BookController {
 
 	private static void sort() {
 		// TODO Auto-generated method stub
-		BookService.sort();
+		BookService.sortByName();
 		read();
 	}
 

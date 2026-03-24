@@ -3,25 +3,35 @@ package vn.devpro.dto;
 import java.time.LocalDate;
 
 public class BorrowedBookRespone {
+	private String code;
 	private String name;
 	private String authorName;
 	private String readerName;
 	private LocalDate dueDate;
 
 	public void display() {
-		System.out.printf("%-35s %-25s %-25s %10s%n", name, authorName, readerName, dueDate);
+		System.out.printf("%17s %-35s %-25s %-25s %10s%n", code, name, authorName, readerName, dueDate);
 	}
 
 	public BorrowedBookRespone() {
 		super();
 	}
 
-	public BorrowedBookRespone(String name, String authorName, String readerName, LocalDate dueDate) {
+	public BorrowedBookRespone(String code, String name, String authorName, String readerName, LocalDate dueDate) {
 		super();
+		this.code = code;
 		this.name = name;
 		this.authorName = authorName;
 		this.readerName = readerName;
 		this.dueDate = dueDate;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public String getName() {

@@ -19,10 +19,13 @@ public class LoanDetailController {
 			System.out.println("\tMa phieu khong ton tai");
 			return;
 		}
-		loanReceipt.display();
+		loanReceipt.displayLoanDetail();
+		int count = 1;
+		System.out.println("Danh sach cac sach cho muon:");
 		List<LoanDetail> loanDetails = LoanDetailService.findById(id);
-		System.out.printf("%3s %-35s %-25s %-15s %10s%n", "ID", "Ten sach", "Tac gia", "Ten the loai", "Ngay tra");
+		System.out.printf("%3s %-35s %-25s %-15s %10s%n", "STT", "Ten sach", "Tac gia", "Ten the loai", "Ngay tra");
 		for (LoanDetail detail : loanDetails) {
+			System.out.printf("%3d ", count++);
 			detail.display();
 		}
 	}

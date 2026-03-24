@@ -17,6 +17,8 @@ public class StatisticService {
 		List<BorrowedBookRespone> bookRespones = new ArrayList<BorrowedBookRespone>();
 		for (LoanDetail loanDetail : LibraryDb.getLoanDetails()) {
 			BorrowedBookRespone bookRespone = new BorrowedBookRespone();
+			Book book = BookService.getById(loanDetail.getBookId());
+			bookRespone.setCode(book.getCode());
 			bookRespone.setName(loanDetail.getBookName());
 			bookRespone.setAuthorName(loanDetail.getAuthorName());
 			LoanReceipt loanReceipt = LoanReceiptService.getById(loanDetail.getLoanReceiptId());
@@ -47,6 +49,8 @@ public class StatisticService {
 			LoanReceipt loanReceipt = LoanReceiptService.getById(loanDetail.getLoanReceiptId());
 			if (loanReceipt.getReaderId() == reader.getId()) {
 				BorrowedBookRespone bookRespone = new BorrowedBookRespone();
+				Book curentBook = BookService.getById(loanDetail.getBookId());
+				bookRespone.setCode(curentBook.getCode());
 				bookRespone.setName(loanDetail.getBookName());
 				bookRespone.setAuthorName(loanDetail.getAuthorName());
 
@@ -59,4 +63,5 @@ public class StatisticService {
 		}
 		return bookRespones;
 	}
+
 }

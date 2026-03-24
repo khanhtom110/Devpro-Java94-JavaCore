@@ -66,7 +66,7 @@ public class LibraryDb {
 
 		// Sách của Nguyễn Nhật Ánh (Author 4 - Thể loại Thiếu nhi 1)
 		books.add(new Book(bookId++, "BK" + new Date().getTime() + bookId, 4, 1, "Cho toi xin mot ve di tuoi tho", 220,
-				15));
+				2));
 		books.add(new Book(bookId++, "BK" + new Date().getTime() + bookId, 4, 1, "Mat biec", 250, 1));
 		books.add(new Book(bookId++, "BK" + new Date().getTime() + bookId, 4, 1, "Kinh van hoa", 350, 20));
 

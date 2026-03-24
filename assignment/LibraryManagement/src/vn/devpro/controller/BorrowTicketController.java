@@ -24,7 +24,7 @@ public class BorrowTicketController {
 			System.out.println("\t 8.Xoa sach trong phieu");
 			System.out.println("\t 9.Xoa toan bo sach trong phieu");
 			System.out.println("\t10.Xac nhan muon sach");
-			System.out.println("\t11.Xem lich su muon sach");
+			System.out.println("\t11.Xem danh sach phieu muon");
 			System.out.println("\t12.Xem chi tiet phieu muon sach");
 			System.out.println("\t 0.Quay lai");
 			System.out.print("Lua chon cua ban la: ");
@@ -59,7 +59,6 @@ public class BorrowTicketController {
 				break;
 			case 10:
 				borrowTicket.borrow();
-				borrowTicket.deleteAll();
 				break;
 			case 11:
 				LoanReceiptController.read();

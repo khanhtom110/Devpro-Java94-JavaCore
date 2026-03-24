@@ -15,7 +15,8 @@ public class BorrowItem {
 			System.out.println("Loi CSDL");
 			return;
 		}
-		System.out.printf("%-35s %-25s%n", book.getName(), author.getFirstName() + " " + author.getLastName());
+		System.out.printf("%17s %-35s %-25s%n", book.getCode(), book.getName(),
+				author.getFirstName() + " " + author.getLastName());
 	}
 
 	public BorrowItem() {

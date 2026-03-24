@@ -13,6 +13,17 @@ public class LoanReceipt {
 		System.out.printf("%10d %10d %-25s %10s %15s%n", id, readerId, readerName, createDate, status);
 	}
 
+	// In o chi tiet phieu
+	public void displayLoanDetail() {
+		System.out.println("TRUNG TAM TT DEVPRO");
+		System.out.println("TRUONG DH DEVPRO");
+		System.out.println("\t\t\t\tPHIEU MUON SACH");
+		System.out.println("\tMa phieu: " + id);
+		System.out.println("\tMa doc gia: " + readerId);
+		System.out.println("\tHo ten doc gia: " + readerName);
+		System.out.println("\tNgay muon: " + createDate);
+	}
+
 	public LoanReceipt() {
 		super();
 	}

@@ -12,7 +12,7 @@ public class LoanDetail {
 	private LocalDate dueDate;
 
 	public void display() {
-		System.out.printf("%3d %-35s %-25s %-15s %10s%n", id, bookName, authorName, categoryName, dueDate);
+		System.out.printf("%-35s %-25s %-15s %10s%n", bookName, authorName, categoryName, dueDate);
 	}
 
 	public LoanDetail() {

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import vn.devpro.LibraryManagement;
 import vn.devpro.database.LibraryDb;
 import vn.devpro.model.Author;
 import vn.devpro.model.Book;
@@ -24,9 +25,11 @@ public class BorrowTicket {
 	private List<BorrowItem> borrowItems = new ArrayList<BorrowItem>();
 
 	public void display() {
+		int count = 1;
 		System.out.println("\t\tPHIEU MUON SACH");
-		System.out.printf("%-35s %-25s%n", "Ten sach", "Tac gia");
+		System.out.printf("%3s %17s %-35s %-25s%n", "STT", "Ma sach", "Ten sach", "Tac gia");
 		for (BorrowItem borrowItem : borrowItems) {
+			System.out.printf("%3d ", count++);
 			borrowItem.display();
 		}
 	}
@@ -39,8 +42,7 @@ public class BorrowTicket {
 		}
 
 		System.out.println("\t\tTHEM SACH VAO PHIEU");
-		System.out.print("\tNhap ma nguoi doc: ");
-		String readerCode = sc.nextLine();
+		String readerCode = LibraryManagement.getCustomerCode();
 		Reader reader = ReaderService.getByCode(readerCode);
 		if (reader == null) {
 			System.out.println("\tMa nguoi doc chua chinh xac");
@@ -49,6 +51,10 @@ public class BorrowTicket {
 
 		System.out.print("\tChon sach (nhap ma sach): ");
 		String code = sc.nextLine();
+		if (code == null || code.trim().length() <= 0) {
+			System.out.println("\tKhong duoc de trong");
+			return;
+		}
 		Book book = BookService.getByCode(code);
 		if (book == null) {
 			System.out.println("\tTam thoi het sach");
@@ -103,6 +109,10 @@ public class BorrowTicket {
 		System.out.println("\t\tSUA SACH TRONG PHIEU");
 		System.out.print("\tChon sach (nhap ma sach): ");
 		String code = sc.nextLine();
+		if (code == null || code.trim().length() <= 0) {
+			System.out.println("\tKhong duoc de trong");
+			return;
+		}
 		Book book = BookService.getByCode(code);
 		if (book == null) {
 			System.out.println("\tSach khong ton tai");
@@ -115,6 +125,10 @@ public class BorrowTicket {
 		}
 		System.out.print("\tChon sach moi (nhap ma sach): ");
 		code = sc.nextLine();
+		if (code == null || code.trim().length() <= 0) {
+			System.out.println("\tKhong duoc de trong");
+			return;
+		}
 		book = BookService.getByCode(code);
 		if (book == null) {
 			System.out.println("\tTam thoi het sach");
@@ -136,12 +150,20 @@ public class BorrowTicket {
 		System.out.println("\t\tXOA SACH TRONG PHIEU");
 		System.out.print("\tChon sach (nhap ma sach): ");
 		String code = sc.nextLine();
+		if (code == null || code.trim().length() <= 0) {
+			System.out.println("\tKhong duoc de trong");
+			return;
+		}
 		Book book = BookService.getByCode(code);
 		if (book == null) {
 			System.out.println("\tSach khong co trong phieu");
 			return;
 		}
 		int index = findById(book.getId());
+		if (index == -1) {
+			System.out.println("\tSach khong co trong phieu");
+			return;
+		}
 		borrowItems.remove(index);
 		System.out.println("\tXoa sach trong phieu thanh cong!");
 	}
@@ -155,8 +177,7 @@ public class BorrowTicket {
 	public void borrow() {
 		// TODO Auto-generated method stub
 		// Chon nguoi doc
-		System.out.print("\tNhap ma nguoi doc: ");
-		String code = sc.nextLine();
+		String code = LibraryManagement.getCustomerCode();
 		int index = ReaderService.findByCode(code);
 		if (index == -1) {
 			System.out.println("\tBan doc chua co tai khoan, khong the muon sach");
@@ -213,7 +234,7 @@ public class BorrowTicket {
 			loanDetail.setAuthorName(author.getFirstName() + " " + author.getLastName());
 			loanDetail.setBookName(book.getName());
 			loanDetail.setCategoryName(CategoryService.getById(book.getCategoryId()).getName());
-			loanDetail.setDueDate(loanReceipt.getCreateDate().plusDays(7));
+			loanDetail.setDueDate(loanReceipt.getCreateDate().plusDays(31));
 
 			// Set lai quantity
 			book.setQuantity(book.getQuantity() - 1);
@@ -222,6 +243,7 @@ public class BorrowTicket {
 		}
 		LoanReceiptService.save(loanReceipt);
 		System.out.println("\tBan da muon sach thanh cong!");
+		deleteAll();
 	}
 
 	private int countBorrowedBooks(int readerId) {
